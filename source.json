@@ -1,0 +1,7 @@
+{
+  "name": "Reddit views",
+  "views": [
+    { "name": "Reddit", "kind": "listing", "hint": "Cards with votes, pictures and comments", "template": "listing.html", "style": "listing.css" },
+    { "name": "Reddit", "kind": "content", "hint": "A post's card over threads of comments", "template": "content.html", "style": "content.css" }
+  ]
+}

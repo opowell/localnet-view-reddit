@@ -1,0 +1,20 @@
+<div class="rd-head">
+  <div class="rd-votes">
+    <span class="rd-arrow rd-up" aria-hidden="true"></span>
+    <span class="rd-score">{{ item.points || 'Vote' }}</span>
+    <span class="rd-arrow rd-down" aria-hidden="true"></span>
+  </div>
+  <div class="rd-main">
+    <div class="rd-meta">
+      <span class="rd-community">{{ item.site }}</span>
+      <span data-if="item.author">Posted by u/{{ item.author }}</span>
+      <span data-if="item.ago">{{ item.ago }}</span>
+    </div>
+    <h1 class="rd-title">{{ item.title }}</h1>
+    <a data-if="item.url" class="rd-link" href="{{ item.url }}">{{ item.url }}</a>
+    <div class="rd-actions">
+      <span>{{ item.comments }} Comments</span>
+      <span data-if="item.length">{{ item.length }}</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="feed">
+  <article data-for="row in rows" class="post" data-class-read="row.read">
+    <div class="votes" aria-label="{{ row.points }} points">
+      <span class="arrow up" aria-hidden="true"></span>
+      <span class="score">{{ row.points || 'Vote' }}</span>
+      <span class="arrow down" aria-hidden="true"></span>
+    </div>
+    <div class="main">
+      <div class="meta">
+        <span class="community">{{ row.source || row.site }}</span>
+        <span data-if="row.author">Posted by u/{{ row.author }}</span>
+        <span data-if="row.ago">{{ row.ago }}</span>
+        <span data-if="row.unread" class="flair">New</span>
+      </div>
+      <h3 class="title"><a data-open="row">{{ row.title }}</a></h3>
+      <a data-if="row.picture" data-open="row" class="media"><img src="{{ row.picture }}" alt="" loading="lazy"></a>
+      <div class="actions">
+        <a class="action" data-open="row">
+          <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M10 3c-4.4 0-8 2.9-8 6.5 0 1.9 1 3.6 2.6 4.8L4 17l3.4-1.6c.8.2 1.7.3 2.6.3 4.4 0 8-2.9 8-6.5S14.4 3 10 3z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+          {{ row.comments || 0 }} Comments
+        </a>
+        <a data-if="row.url" class="action" href="{{ row.url }}">↗ {{ row.site }}</a>
+        <span data-if="row.saved" class="action saved">★ Saved</span>
+      </div>
+    </div>
+  </article>
+</div>
