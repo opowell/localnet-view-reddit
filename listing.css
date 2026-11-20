@@ -1,175 +1,224 @@
-/* Reddit: a column of cards, a vote rail at the left of each, its community and poster over its title. */
+/* Reddit's Card view: a column of posts between rules, each its community and age over a large title, its picture
+   at full width on a blurred bed of itself, and a row of rounded buttons: the vote, the comments, the page. */
+
 & {
-  --rd-page: #030303;
-  --rd-card: #1a1a1b;
-  --rd-line: #343536;
-  --rd-fg: #d7dadc;
-  --rd-dim: #818384;
-  --rd-rail: #151516;
-  --rd-orange: #ff4500;
-  --rd-blue: #7193ff;
-  --rd-hover: #272729;
+  --rd-page: #0e1113;
+  --rd-hover: #181c1f;
+  --rd-strong: #eef1f3;
+  --rd-fg: #b7cad4;
+  --rd-dim: #8ba2ad;
+  --rd-pill: #2a3236;
+  --rd-pill-hover: #333d42;
+  --rd-line: rgb(255 255 255 / 10%);
+  --rd-link: #648efc;
+  --rd-thumb: #000;
+  --rd-orange: #d93900;
+  --rd-blue: #0079d3;
+
   min-height: 100%;
-  padding: 20px 12px 32px;
+  padding: 16px 16px 32px;
   background: var(--rd-page);
   color: var(--rd-fg);
-  font: 14px/1.4 -apple-system, BlinkMacSystemFont, 'Segoe UI', 'IBM Plex Sans', Arial, sans-serif;
+  font: 14px/20px 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
 }
 
 :root[data-theme='light'] & {
-  --rd-page: #dae0e6;
-  --rd-card: #fff;
-  --rd-line: #ccc;
-  --rd-fg: #1c1c1c;
-  --rd-dim: #787c7e;
-  --rd-rail: #f8f9fa;
-  --rd-hover: #f6f7f8;
+  --rd-page: #fff;
+  --rd-hover: #f6f8f9;
+  --rd-strong: #0f1a1c;
+  --rd-fg: #2a3c42;
+  --rd-dim: #576f76;
+  --rd-pill: #e5ebee;
+  --rd-pill-hover: #d2dadd;
+  --rd-line: rgb(0 0 0 / 10%);
+  --rd-link: #115bca;
+  --rd-thumb: #e5ebee;
 }
 
 @media (prefers-color-scheme: light) {
   :root:not([data-theme='dark']) & {
-    --rd-page: #dae0e6;
-    --rd-card: #fff;
-    --rd-line: #ccc;
-    --rd-fg: #1c1c1c;
-    --rd-dim: #787c7e;
-    --rd-rail: #f8f9fa;
-    --rd-hover: #f6f7f8;
+    --rd-page: #fff;
+    --rd-hover: #f6f8f9;
+    --rd-strong: #0f1a1c;
+    --rd-fg: #2a3c42;
+    --rd-dim: #576f76;
+    --rd-pill: #e5ebee;
+    --rd-pill-hover: #d2dadd;
+    --rd-line: rgb(0 0 0 / 10%);
+    --rd-link: #115bca;
+    --rd-thumb: #e5ebee;
   }
 }
 
 .feed {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  max-width: 640px;
   margin: 0 auto;
+  max-width: 732px;
+}
+
+hr {
+  height: 0;
+  margin: 4px 0;
+  border: 0;
+  border-top: 1px solid var(--rd-line);
 }
 
 .post {
-  display: grid;
-  grid-template-columns: 40px 1fr;
-  overflow: hidden;
-  border: 1px solid var(--rd-line);
-  border-radius: 4px;
-  background: var(--rd-card);
+  border-radius: 16px;
+  padding: 4px 16px 8px;
 }
 
 .post:hover {
-  border-color: var(--rd-dim);
+  background: var(--rd-hover);
 }
 
-.votes {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  padding: 8px 0;
-  background: var(--rd-rail);
-}
-
-.arrow {
-  width: 0;
-  height: 0;
-  border: 7px solid transparent;
-}
-
-.up {
-  border-top-width: 0;
-  border-bottom: 9px solid var(--rd-dim);
-}
-
-.down {
-  border-bottom-width: 0;
-  border-top: 9px solid var(--rd-dim);
-}
-
-.score {
-  color: var(--rd-fg);
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.main {
-  min-width: 0;
-  padding: 8px 8px 2px;
-}
-
-.meta {
+.head {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  align-items: center;
+  gap: 4px;
   color: var(--rd-dim);
   font-size: 12px;
+  line-height: 16px;
+  min-height: 32px;
+}
+
+.avatar {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin-right: 4px;
+  border-radius: 50%;
+  background: var(--rd-blue);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
 .community {
-  color: var(--rd-fg);
-  font-weight: 700;
+  color: var(--rd-strong);
+  font-weight: 600;
 }
 
 .flair {
-  padding: 0 6px;
-  border-radius: 10px;
+  margin-left: 4px;
+  padding: 0 8px;
+  border-radius: 999px;
   background: var(--rd-orange);
   color: #fff;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .title {
-  margin: 6px 0 8px;
+  margin: 4px 0 0;
+  color: var(--rd-strong);
+  font-weight: 600;
   font-size: 18px;
-  font-weight: 500;
-  line-height: 1.3;
+  line-height: 24px;
 }
 
 .title a {
-  color: var(--rd-fg);
+  color: inherit;
   text-decoration: none;
   cursor: pointer;
 }
 
-.read .title a {
+.read .title {
   color: var(--rd-dim);
-}
-
-.media {
-  display: block;
-  margin: 0 -8px 8px;
-  background: #000;
-}
-
-.media img {
-  display: block;
-  width: 100%;
-  max-height: 512px;
-  object-fit: contain;
 }
 
 .actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
-  margin-left: -6px;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
 }
 
-.action {
+.pill {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 6px;
-  border-radius: 2px;
-  color: var(--rd-dim);
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: var(--rd-pill);
+  color: var(--rd-strong);
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 600;
   text-decoration: none;
+  white-space: nowrap;
   cursor: pointer;
 }
 
-a.action:hover {
-  background: var(--rd-hover);
+a.pill:hover {
+  background: var(--rd-pill-hover);
+}
+
+.votes {
+  gap: 0;
+  padding: 0;
+  cursor: default;
+}
+
+.vote {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.score {
+  min-width: 8px;
+  text-align: center;
 }
 
 .saved {
-  color: var(--rd-blue);
+  color: var(--rd-link);
+}
+
+.link {
+  display: block;
+  overflow: hidden;
+  margin-top: 4px;
+  color: var(--rd-link);
+  font-size: 12px;
+  line-height: 16px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-decoration: underline;
+}
+
+.media {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  margin-top: 8px;
+  border: 1px solid var(--rd-line);
+  border-radius: 16px;
+  background: var(--rd-thumb);
+  cursor: pointer;
+}
+
+.media .blur {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(40px) brightness(0.6);
+  transform: scale(1.2);
+}
+
+.media .shown {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-height: 540px;
+  object-fit: contain;
 }

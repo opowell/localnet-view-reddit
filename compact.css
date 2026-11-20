@@ -1,0 +1,260 @@
+/* Reddit's Compact view: a wider column of rows between rules, each a small rounded thumbnail (a link's or a text
+   post's mark where there is no picture) beside its community, title and a line of buttons. */
+
+& {
+  --rd-page: #0e1113;
+  --rd-hover: #181c1f;
+  --rd-strong: #eef1f3;
+  --rd-fg: #b7cad4;
+  --rd-dim: #8ba2ad;
+  --rd-pill: #2a3236;
+  --rd-pill-hover: #333d42;
+  --rd-line: rgb(255 255 255 / 10%);
+  --rd-link: #648efc;
+  --rd-thumb: #000;
+  --rd-orange: #d93900;
+  --rd-blue: #0079d3;
+
+  min-height: 100%;
+  padding: 16px 16px 32px;
+  background: var(--rd-page);
+  color: var(--rd-fg);
+  font: 14px/20px 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+}
+
+:root[data-theme='light'] & {
+  --rd-page: #fff;
+  --rd-hover: #f6f8f9;
+  --rd-strong: #0f1a1c;
+  --rd-fg: #2a3c42;
+  --rd-dim: #576f76;
+  --rd-pill: #e5ebee;
+  --rd-pill-hover: #d2dadd;
+  --rd-line: rgb(0 0 0 / 10%);
+  --rd-link: #115bca;
+  --rd-thumb: #e5ebee;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) & {
+    --rd-page: #fff;
+    --rd-hover: #f6f8f9;
+    --rd-strong: #0f1a1c;
+    --rd-fg: #2a3c42;
+    --rd-dim: #576f76;
+    --rd-pill: #e5ebee;
+    --rd-pill-hover: #d2dadd;
+    --rd-line: rgb(0 0 0 / 10%);
+    --rd-link: #115bca;
+    --rd-thumb: #e5ebee;
+  }
+}
+
+.feed {
+  margin: 0 auto;
+  max-width: 940px;
+}
+
+hr {
+  height: 0;
+  margin: 4px 0;
+  border: 0;
+  border-top: 1px solid var(--rd-line);
+}
+
+.post {
+  border-radius: 16px;
+  display: flex;
+  gap: 16px;
+  padding: 8px 16px;
+}
+
+.post:hover {
+  background: var(--rd-hover);
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  color: var(--rd-dim);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.avatar {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  margin-right: 2px;
+  border-radius: 50%;
+  background: var(--rd-blue);
+  color: #fff;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.community {
+  color: var(--rd-strong);
+  font-weight: 600;
+}
+
+.flair {
+  margin-left: 4px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: var(--rd-orange);
+  color: #fff;
+  font-weight: 600;
+}
+
+.title {
+  margin: 2px 0 4px;
+  color: var(--rd-strong);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.title a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.read .title {
+  color: var(--rd-dim);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: var(--rd-pill);
+  color: var(--rd-strong);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+a.pill:hover {
+  background: var(--rd-pill-hover);
+}
+
+.votes {
+  gap: 0;
+  padding: 0;
+  cursor: default;
+}
+
+.vote {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.score {
+  min-width: 8px;
+  text-align: center;
+}
+
+.saved {
+  color: var(--rd-link);
+}
+
+.thumb {
+  position: relative;
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  width: 104px;
+  height: 78px;
+  border-radius: 8px;
+  background: var(--rd-thumb);
+  color: var(--rd-dim);
+  cursor: pointer;
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.placeholder,
+.placeholder > span {
+  display: flex;
+}
+
+.badge {
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  overflow: hidden;
+  max-width: calc(100% - 8px);
+  padding: 0 4px;
+  border-radius: 4px;
+  background: rgb(0 0 0 / 60%);
+  color: #fff;
+  font-size: 10px;
+  line-height: 16px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+}
+
+.round {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: var(--rd-strong);
+  cursor: pointer;
+}
+
+.round:hover,
+a.plain:hover {
+  background: var(--rd-pill-hover);
+}
+
+.plain {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 999px;
+  color: var(--rd-fg);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}

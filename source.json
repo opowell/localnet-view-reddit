@@ -1,7 +1,8 @@
 {
   "name": "Reddit views",
   "views": [
-    { "name": "Reddit", "kind": "listing", "hint": "Cards with votes, pictures and comments", "template": "listing.html", "style": "listing.css" },
+    { "name": "Reddit", "kind": "listing", "hint": "Cards, as Reddit's Card view: big pictures, votes and comments", "template": "listing.html", "style": "listing.css" },
+    { "name": "Reddit compact", "kind": "listing", "hint": "Rows, as Reddit's Compact view: a thumbnail beside each title", "template": "compact.html", "style": "compact.css" },
     { "name": "Reddit", "kind": "content", "hint": "A post's card over threads of comments", "template": "content.html", "style": "content.css" }
   ]
 }
